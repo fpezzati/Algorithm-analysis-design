@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Algorithm, analysis and design</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+  <h3>Algorithm, analysis and design</h3>
+  To study algorithms behavior and to describe them by a mathematical point of view.
+  Describing algorithm by math give us a exact criteria to compare performaces.
+  Criterias are implemented by a mathematical model (a function) and are used to
+  see how an algorithm behave in the optimal case, in the average case and in it's
+  worst case. So an algorithm may have more than one model to describes how it behave.
+  <h4>Landau notation</h4>
+  Landau notation comes to help classify algorithm behavior. Given some functions
+  $f:\mathbb{N} \to \mathbb{R}$. We can say $f(n)$ is in $O(g(n))$ if
+  $$ \lim_{n \to \infty} \frac{f(n)}{g(n)} \lt \infty$$
+  $f(n)$ is in the same order of $g(n)$ means that exists constant $K$ that:
+  $$  \lim_{n \to \infty} \frac{f(n)}{Kg(n)} \lt 1 $$
+  $f(n)$ is in an order inferior than $g(n)$ if
+  $$  \lim_{n \to \infty} \frac{f(n)}{g(n)} \lt 0 $$
+  Let say $n$ is the data set size our algorithm will work on. So when we say that
+  an algorithm is in $O(n ln n)$ order we say that we can represent the algorithm
+  behavior by function $f(n)$ and generally speaking $f(n)$ behaves like $n ln n$,
+  performances are similar or differ by a constant factor, call it $K$.
+
+  <h3>$ O $ function</h3>
+  $$ \lim_{n \to \infty} \frac{f(n)}{g(n)} \lt \infty$$
+  $O(f(n))$ indicates all the $g(n)$ function that $|f(n)/g(n)|$ has a superior
+  limit by $n \to \infty$. We use $O$ to indicate algorithm's behavior in the worst
+  case.
+
+  <h3>$ \Omega $ function</h3>
+  $$ \lim_{n \to \infty} \frac{g(n)}{Kf(n)} \lt \infty$$
+  $\Omega(f(n))$ indicates all the $g(n)$ function that $|g(n)/f(n)|$ has an inferior
+  limit in $K$ strictly positive ($\lim_{n \to infty} \frac{g(n)}{f(n)} \lt K$). We use $\Omega$ to indicate
+  algorithm's behavior in the average case.
+
+  <h3>$ \Theta $ function</h3>
+  $\Theta(f(n))$ indicates all the $g(n)$ function that $|g(n)/f(n)|$ has both superior
+  and inferior limit by $n \to \infty$. We use $\Theta$ notation to indicate algorithm's
+  behavior in the optimal case.
+
+  <h3>Computational complexity</h3>
+  Study algorithm's performance by observing the increase of computational enforce
+  in the worst case. Finding algorithm's enforce superior limit permit to compare
+  algorithms performances in the worst case.
+</body>
+</html>
