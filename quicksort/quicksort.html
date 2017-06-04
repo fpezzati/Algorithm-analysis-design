@@ -11,7 +11,18 @@
 </head>
 <body>
   <h3>Quicksort</h3>
-  Divide-et-impera algorithm
+  Divide-et-impera algorithm. Let $C$ occurrences of confrontations, $S$ occurrences
+  of moves and $P$ occurrences of partitioning during algorithm execution. Then:
+  $$\alpha C + \beta S + \gamma P$$
+  indicates total execution time, where $\alpha$, $\beta$ and $\gamma$ indicate
+  respectively confrontation, move and partition operation cost.
+
+  Quicksort takes about $2n \ln n$ confrontations and about $\frac{1}{3} n \ln n$
+  moves (in the worst case?).
+  Average confrontations is expressed as:
+  $$C_n = n + 1 + \frac{1}{n} \sum_{j=1}^{n}(C_{j-1} + C_{n-j}), C_0 = 0$$
+  average moves is expressed as:
+  $$S_n = \frac{n-2}{6} + \frac{1}{n} \sum_{j=1}^{n}(S_{j-1} + S_{n-j}), S_0 = 0$$
 
   <h3>Worst case</h3>
 

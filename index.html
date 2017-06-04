@@ -38,17 +38,50 @@
   <h3>$ \Omega $ function</h3>
   $$ \lim_{n \to \infty} \frac{g(n)}{Kf(n)} \lt \infty$$
   $\Omega(f(n))$ indicates all the $g(n)$ function that $|g(n)/f(n)|$ has an inferior
-  limit in $K$ strictly positive ($\lim_{n \to infty} \frac{g(n)}{f(n)} \lt K$). We use $\Omega$ to indicate
+  limit in $K$ strictly positive ($\lim_{n \to \infty} \frac{g(n)}{f(n)} \lt K$). We use $\Omega$ to indicate
   algorithm's behavior in the average case.
 
   <h3>$ \Theta $ function</h3>
+  $$ \lim_{n \to \infty} \frac{g(n)}{f(n)} \lt \infty$$
+  $$ \lim_{n \to \infty} \frac{f(n)}{g(n)} \lt \infty$$
   $\Theta(f(n))$ indicates all the $g(n)$ function that $|g(n)/f(n)|$ has both superior
   and inferior limit by $n \to \infty$. We use $\Theta$ notation to indicate algorithm's
-  behavior in the optimal case.
+  behavior in the optimal case (really? Investigate).
 
   <h3>Computational complexity</h3>
   Study algorithm's performance by observing the increase of computational enforce
   in the worst case. Finding algorithm's enforce superior limit permit to compare
   algorithms performances in the worst case.
+
+  <h3>Average effort</h3>
+  Let $\sqcap_n$ be the set of all the input of size $n$ about an algorithm and
+  let $\sqcap_{n,k}$ be the set of all the input of size $n$ the algorithm can elaborate
+  at cost of $k$. Then
+  $$\mu = \frac{\sum_k k \sqcap_{n,k}}{\sqcap_n}$$
+  is average cost of the algorithm.
+
+  <h3>Variance</h3>
+  Let $\sqcap_n$ be the set of all the input of size $n$ elaborated by an algorithm.
+  Then:
+  $$\sigma^2 = \frac{\sum_k(k-\mu)^2\sqcap_{n,k}}{\sqcap_n} = \frac{\sum_kk^2\sqcap_{n,k}}{\sqcap_n} - \mu^2$$
+  $\sigma^2$ indicates variance and $\sigma$ indicates standard deviation.
+
+  <h3> Chebyshev's inequality</h3>
+  Let $X$ be a random variable with mean (read expected value) $E(X) = \mu$ and
+  variance $\sigma^2 = var(X)$. Then Chebyshev's inequality states that:
+  $$P(|X - \mu| \gte t) \lte \frac{\sigma^2}{t^2}$$
+  for any $t \gt 0$. So the probability that $X$ differ from it's expected value
+  $\mu$ by a constant $t$ value is equal to variance divided by $t^2$.
+  To prove Chebyshev's inequality we will use Markov's inequality. Markov's inequality
+  states that:
+  $$P(X \gte t) \lte \frac{E(X)}{t}$$
+  We can replace $X$ with $|X-\mu|$, it is still a random variable and Markov's
+  inequality still holds,
+  $$P(|X - \mu |\gte t) \lte \frac{E(|X - \mu|)}{t}$$
+  We can observe that if $P(|X - \mu |\gte t)$ is true, then $P((X-\mu)^2 \gte t^2)$
+  is also true. Inequality holds for any value of $X$ and $\mu$. So:
+  $$P((X-\mu)^2 \gte t^2) \lte \frac{E((X - \mu)^2)}{t^2}$$
+  but $E((X - \mu)^2) = \sigma^2$ it is variance definition in fact.
+  Why Chebyshev's inequality is important?
 </body>
 </html>
