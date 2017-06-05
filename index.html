@@ -64,7 +64,13 @@
   Let $\sqcap_n$ be the set of all the input of size $n$ elaborated by an algorithm.
   Then:
   $$\sigma^2 = \frac{\sum_k(k-\mu)^2\sqcap_{n,k}}{\sqcap_n} = \frac{\sum_kk^2\sqcap_{n,k}}{\sqcap_n} - \mu^2$$
-  $\sigma^2$ indicates variance and $\sigma$ indicates standard deviation.
+  $\sigma^2$ indicates variance and $\sigma$ indicates standard deviation. In other
+  words: let $X \in {X_1 \ldot X_n}$ be a random variable and let $m = M(X)$ $X$'s
+  average value. $m$ will represent a good information if $|m - X_k|$ is small (with
+  $k \in {1 \ldot n} of course). Variance represent sum of differences between $m$
+  and $X$ powered by 2:
+  $$\sigma^2 = M(X-m)^2 = \sum_{k=1}^{n}(M(X)-X_k)p_k$$
+  where $p_k$ is chance about $X_k$ to occurr.
 
   <h3> Chebyshev's inequality</h3>
   Let $X$ be a random variable with mean (read expected value) $E(X) = \mu$ and
@@ -82,6 +88,8 @@
   is also true. Inequality holds for any value of $X$ and $\mu$. So:
   $$P((X-\mu)^2 \gte t^2) \lte \frac{E((X - \mu)^2)}{t^2}$$
   but $E((X - \mu)^2) = \sigma^2$ it is variance definition in fact.
-  Why Chebyshev's inequality is important?
+  Why Chebyshev's inequality is important? Because it states that $\frac{1}{t^2}$
+  of a distribution's values, in our case distribution is algorithm effort (I guess),
+  are far more than $t$ by expected value ($E(X)).
 </body>
 </html>
