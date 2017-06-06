@@ -88,8 +88,13 @@
   is also true. Inequality holds for any value of $X$ and $\mu$. So:
   $$P((X-\mu)^2 \gte t^2) \lte \frac{E((X - \mu)^2)}{t^2}$$
   but $E((X - \mu)^2) = \sigma^2$ it is variance definition in fact.
-  Why Chebyshev's inequality is important? Because it states that $\frac{1}{t^2}$
-  of a distribution's values, in our case distribution is algorithm effort (I guess),
-  are far more than $t$ by expected value ($E(X)).
+  Why Chebyshev's inequality is important?
+  Let suppose we know expected value about $X$, $E(X) = \mu$ and variance $Var(X) = \sigma^2$.
+  Inequality states that $P(|X - \mu| \gte t) \lte \frac{E(|X - \mu|)}{t}$, in other
+  words, probability than $X$ is far as $t$ from $\mu$ is less than $\frac{1}{t^2}$.
+  Let ${X_1 \ldot X_n}$ all the effort about an algorithm. We expect than all algorithm's
+  effort will be near to $|X - \mu|$ as values and efforts can be far from $|X-\mu|$
+  with probability of $\frac{1}{t^2}$. Chebyshev's inequality gives us a limit about
+  algorithms performance.
 </body>
 </html>
