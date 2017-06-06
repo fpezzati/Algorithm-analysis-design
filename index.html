@@ -65,9 +65,9 @@
   Then:
   $$\sigma^2 = \frac{\sum_k(k-\mu)^2\sqcap_{n,k}}{\sqcap_n} = \frac{\sum_kk^2\sqcap_{n,k}}{\sqcap_n} - \mu^2$$
   $\sigma^2$ indicates variance and $\sigma$ indicates standard deviation. In other
-  words: let $X \in {X_1 \ldot X_n}$ be a random variable and let $m = M(X)$ $X$'s
+  words: let $X \in {X_1 \ldots X_n}$ be a random variable and let $m = M(X)$ $X$'s
   average value. $m$ will represent a good information if $|m - X_k|$ is small (with
-  $k \in {1 \ldot n} of course). Variance represent sum of differences between $m$
+  $k \in {1 \ldots n} of course). Variance represent sum of differences between $m$
   and $X$ powered by 2:
   $$\sigma^2 = M(X-m)^2 = \sum_{k=1}^{n}(M(X)-X_k)p_k$$
   where $p_k$ is chance about $X_k$ to occurr.
@@ -92,7 +92,7 @@
   Let suppose we know expected value about $X$, $E(X) = \mu$ and variance $Var(X) = \sigma^2$.
   Inequality states that $P(|X - \mu| \gte t) \lte \frac{E(|X - \mu|)}{t}$, in other
   words, probability than $X$ is far as $t$ from $\mu$ is less than $\frac{1}{t^2}$.
-  Let ${X_1 \ldot X_n}$ all the effort about an algorithm. We expect than all algorithm's
+  Let ${X_1 \ldots X_n}$ all the effort about an algorithm. We expect than all algorithm's
   effort will be near to $|X - \mu|$ as values and efforts can be far from $|X-\mu|$
   with probability of $\frac{1}{t^2}$. Chebyshev's inequality gives us a limit about
   algorithms performance.
