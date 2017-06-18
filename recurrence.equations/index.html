@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recurrence equations</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+  Recurrence equation is a recursive formula who express a sequence's n-th element
+  in relation with the previous $n-1$ elements. Recurrence equation is of order
+  $r$ when n-th element is directly related with $n-1, n-2, \dots, n-r$ previous elements.
+  Recurrence equations are often used to express recursive algorithms behavior.
+  Just think about mergesort complexity. We can describe how it behave by the
+  recurrence equation:
+  $$ C_n = C_{n/2} + C_{n/2} + n, C_0 = 1;  $$
+
+  There are a lot of recurrence equation types:
+  <ul>
+    <li>first order
+      <ul>
+        <li>linear</li>
+        <li>not linear</li>
+      </ul>
+    </li>
+    <li>second order
+      <ul>
+        <li>linear</li>
+        <li>not linear</li>
+        <li>with variables</li>
+      </ul>
+    </li>
+    <li>order $t$</li>
+    <li>full history</li>
+    <li>divide et impera</li>
+  </ul>
+</body>
+</html>

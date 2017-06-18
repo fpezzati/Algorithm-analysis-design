@@ -75,26 +75,66 @@
   <h3> Chebyshev's inequality</h3>
   Let $X$ be a random variable with mean (read expected value) $E(X) = \mu$ and
   variance $\sigma^2 = var(X)$. Then Chebyshev's inequality states that:
-  $$P(|X - \mu| \gte t) \lte \frac{\sigma^2}{t^2}$$
+  $$P(|X - \mu| \ge t) \le \frac{\sigma^2}{t^2}$$
   for any $t \gt 0$. So the probability that $X$ differ from it's expected value
   $\mu$ by a constant $t$ value is equal to variance divided by $t^2$.
   To prove Chebyshev's inequality we will use Markov's inequality. Markov's inequality
   states that:
-  $$P(X \gte t) \lte \frac{E(X)}{t}$$
+  $$P(X \ge t) \le \frac{E(X)}{t}$$
   We can replace $X$ with $|X-\mu|$, it is still a random variable and Markov's
   inequality still holds,
-  $$P(|X - \mu |\gte t) \lte \frac{E(|X - \mu|)}{t}$$
-  We can observe that if $P(|X - \mu |\gte t)$ is true, then $P((X-\mu)^2 \gte t^2)$
+  $$P(|X - \mu |\ge t) \le \frac{E(|X - \mu|)}{t}$$
+  We can observe that if $P(|X - \mu |\ge t)$ is true, then $P((X-\mu)^2 \ge t^2)$
   is also true. Inequality holds for any value of $X$ and $\mu$. So:
-  $$P((X-\mu)^2 \gte t^2) \lte \frac{E((X - \mu)^2)}{t^2}$$
+  $$P((X-\mu)^2 \ge t^2) \le \frac{E((X - \mu)^2)}{t^2}$$
   but $E((X - \mu)^2) = \sigma^2$ it is variance definition in fact.
   Why Chebyshev's inequality is important?
   Let suppose we know expected value about $X$, $E(X) = \mu$ and variance $Var(X) = \sigma^2$.
-  Inequality states that $P(|X - \mu| \gte t) \lte \frac{E(|X - \mu|)}{t}$, in other
+  Inequality states that $P(|X - \mu| \ge t) \le \frac{E(|X - \mu|)}{t}$, in other
   words, probability than $X$ is far as $t$ from $\mu$ is less than $\frac{1}{t^2}$.
   Let ${X_1 \ldots X_n}$ all the effort about an algorithm. We expect than all algorithm's
   effort will be near to $|X - \mu|$ as values and efforts can be far from $|X-\mu|$
-  with probability of $\frac{1}{t^2}$. Chebyshev's inequality gives us a limit about
-  algorithms performance.
+  with probability of $\frac{1}{t^2}$. Chebyshev's inequality gives us a way to
+  analyze algorithms performances.
+
+  <h3>Combinations permutations and dispositions</h3>
+  Given a set $N = {0, 1, \dots, n}$.
+  Combinations is a selection of some members
+  of $N$ where order of selection's element does not matter. ${1, 5, k}$ is good
+  as ${k, 1, 5}$. Let $N_3$ be the set of all selection of three elements of $N$,
+  ${1, 5, k}$ and ${k, 1, 5}$ are the same element in $N_3$. Combination does not
+  admit repetition. A $k$-combination of a set $N$ is a subset of $k$ distinct elements
+  of $N$. Let say $N$ has $n$ elements, the number of $k$-combinations of $N$ elements
+  are:
+  $$\binom{n}{k} = \frac{n(n-1)\dots(n-k+1)}{k(k-1)\dots1} = \frac{n!}{k!(n-k)!},$$
+  the binomial coefficient.
+
+  Permutation is a selection of some members of $N$ where selection's element order
+  matter. Let $N_3$ the set of all selection of three elements of $N$, then ${1, 5, k}$
+  and ${k, 1, 5}$ are two distinct elements in $N_3$.
+  Permutations are simple or with repetitions.
+  Simple permutations does not admit repetitions, all the element of the set are
+  distinct. They are easy to compute. Let say $|N|=n$, all the possible $N$'s elements
+  permutations are:
+  $$P_n = n!.$$
+  Permutation with repetitions admit sets where two or more elements are equals.
+  Let say $|N| = n$ and $\alpha \lt n$ are $N$'s equals elements. Then:
+  $$P_{n}^{\alpha} = \frac{n!}{\alpha!},$$
+  indicates all the possible distinct permutations of $N$'s elements. Let say $|N|=n$
+  and $\alpha = 3$ and $\beta = 2$. Then all the possible distinct permutations
+  with $|\alpha|$ and $|\beta|$ identical elements are:
+  $$P_{n}^{\alpha, \beta} = \frac{n!}{\alpha! \beta!}.$$
+
+  Disposition indicates all the posible permutations of $k$ elements in a $|N|=n$
+  set, where $n \gt k$. Dispositions are simple or with repetitions.
+  Simple disposition expects that all the elements of the given set, say $N$, are
+  distinct. So, given $|N|=n$, all the simple dispositions of $k$ elements are:
+  $$D_{(n,k)} = \frac{n!}{(n-k)!}.$$
+  Disposition with repetitions expects that:
+  <ul>
+    <li>you pick $k$ elements from $N$ for each, disposition</li>
+    <li>the same element can occur up to $k$ times in a disposition</li>
+    <li>dispositions differ from each other by at least one element or elements order</li>
+  </ul>
 </body>
 </html>
