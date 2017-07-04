@@ -17,7 +17,6 @@
   Just think about mergesort complexity. We can describe how it behave by the
   recurrence equation:
   $$ C_n = C_{n/2} + C_{n/2} + n, C_0 = 1;  $$
-
   There are a lot of recurrence equation types:
   <ul>
     <li>first order
@@ -37,5 +36,70 @@
     <li>full history</li>
     <li>divide et impera</li>
   </ul>
+  Recurrence equations are represented by a "first step" equation and the recursive
+  part.
+  $$
+  \begin{cases}
+  T(n) = T(n-1)+\Theta(1) \\
+  T(1) = \Theta(1)
+  \end{cases}
+  $$
+  The recursive part should be always made by the recursive segment ($T(n-1)$) and
+  a constant who represent the effort the algorithm required to compute all that
+  is not part of recursive step. The non-recursive step part can't be ignored because
+  it is always present in algorithms and it states that input set size matters.
+  Problems arise when you want to translate recurrence equantions in a equation
+  you can use to analyze algorithm's asymptotic behavior. So, how to deal with recurrence
+  equations? There are few ways.
+  <ul>
+    <li>
+      <h4>Substitution approach</h4>
+      You guess a solution and check if it works. You have to guess it as near as
+      possible to solution. All the guess smaller than solution will work if we
+      are tryin to find a $\Omega$, and all the guess larger than solution will work
+      if we are tryin to find a $O$.
+    </li>
+    <li>
+      <h4>Iterative approach</h4>
+    </li>
+    <li>Tree approach.</li>
+    <li>Main approach.</li>
+  </ul>
+  <h4>Substitution approach</h4>
+  Let be
+  $$
+  \begin{cases}
+  T(n) = T(n-1)+\Theta(1) \\
+  T(1) = \Theta(1)
+  \end{cases}
+  $$
+  the algorithm we want to shape in a linear form to study it's asymptotic behavior.
+  We move Landau notation about costants:
+  $$
+  \begin{cases}
+  T(n) = T(n-1)+c \\
+  T(1) = d
+  \end{cases}
+  $$
+  and we guess that this algorithm has $T(n) = O(n)$ behavior, so $T(n) \lte kn$.
+  So $T(1) = k$ and this is fine if $k \lte d$. Now
+  $$
+  \begin{align}
+  T(n) \lte k(n-1)+c = kn-k+c \lte kn
+  -k \lte -c
+  k \gte c
+  \end{align}
+  $$
+  So solution is solid if $k \gte c$ and $k \gte d$. A $k$ value like can be always
+  found so solution is solid: algorithm has a $O(n)$ behavior.
+  $$
+  \begin{cases}
+  T(n) = T(n-1)+\Theta(1) \\
+  T(1) = \Theta(1)
+  \end{cases}
+  $$
+  <h4></h4>
+  <h4></h4>
+  <h4></h4>
 </body>
 </html>
