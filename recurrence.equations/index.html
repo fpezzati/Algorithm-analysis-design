@@ -81,16 +81,16 @@
   T(1) = d
   \end{cases}
   $$
-  and we guess that this algorithm has $T(n) = O(n)$ behavior, so $T(n) \lte kn$.
-  So $T(1) = k$ and this is fine if $k \lte d$. Now
+  and we guess that this algorithm has $T(n) = O(n)$ behavior, so $T(n) \leq kn$.
+  So $T(1) = k$ and this is fine if $k \leq d$. Now
   $$
   \begin{align}
-  T(n) \lte k(n-1)+c = kn-k+c \lte kn
-  -k \lte -c
-  k \gte c
+  T(n) \leq k(n-1)+c = kn-k+c \leq kn
+  -k \leq -c
+  k \geq c
   \end{align}
   $$
-  So solution is solid if $k \gte c$ and $k \gte d$. A $k$ value like can be always
+  So solution is solid if $k \geq c$ and $k \geq d$. A $k$ value like can be always
   found so solution is solid: algorithm has a $O(n)$ behavior.
   $$
   \begin{cases}
@@ -98,7 +98,51 @@
   T(1) = \Theta(1)
   \end{cases}
   $$
-  <h4></h4>
+  <h4>Iterative approach</h4>
+  In the iterative approach you find the linear equation by exploding the $n$th
+  iterative step in the $n-1$th plus $\Theta(n)$. Let's put this simple. Let
+  $$
+  \begin{cases}
+  T(n) = T(n-1)+\Theta(1) \\
+  T(1) = \Theta(1)
+  \end{cases}
+  $$
+  be the functions who describe our algorithm. The algorithm is the sequential search.
+  Explode $T(n)$ in $T(n-1)+\Theta(1)$ and $T(n-1)$ in $T(n-2)+\Theta(1)$ and so
+  on:
+  $$
+  T(n) = T(n-1) + \Theta(1) = T(n-2)+\Theta(1)+\Theta(1) = \ldots = n \Theta(1) = n
+  $$
+  this is a simple case. Let's try iterative approach agains a binary search algorithm.
+  Binary search can be represented as:
+  $$
+  \begin{cases}
+  T(n) = T(n/2)+\Theta(1) \\
+  T(1) = T(0) = \Theta(1)
+  \end{cases}
+  $$
+  Let's apply the iterative approach:
+  $$
+  T(n) = T(n/2) + \Theta(1) = T(n/2^2) + \Theta(1) + \Theta(1) = \\
+  T(n/2^3) + \Theta(1) + \Theta(1) + \Theta(1) = \ldots = \\
+  T(n/2^n) + n \Theta(1) = \log_2 n \Theta(n) = \Theta(log_2 n)
+  $$
+  Now let's try the iterative approach against algorithm who compute Fibonacci's
+  series.
+  $$
+  \begin{cases}
+  T(n) = T(n-1) + T(n-2) + \Theta(1) \\
+  T(1) = T(0) = 1
+  \end{cases}
+  $$
+  If we try to substitute equations with their previous steps we will see that operands
+  grows in number too fast and we can't find a linear representation. But we can
+  say that $T(n) \leq 2T(n-1)+\Theta(1)$ and $T(n) \geq 2T(n-2)+\Theta(1)$. We can
+  use these two observations to find linear representations of $O$ and $\Theta$
+  about the algorithm.
+  $$
+  \Theta
+  $$
   <h4></h4>
   <h4></h4>
 </body>
