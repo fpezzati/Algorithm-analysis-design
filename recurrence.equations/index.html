@@ -62,8 +62,23 @@
     <li>
       <h4>Iterative approach</h4>
     </li>
-    <li>Tree approach.</li>
-    <li>Main approach.</li>
+    <li>
+      <h4>Tree approach</h4>
+      Let $T(n)$ be the root of our tree. You can determine it's children by appying
+      the first step of Iterative approach, then you can apply again that first
+      step to children's children and so on until you reach tree's leafs $(T(1))$.
+      This approach looks to me like a graphical representation of the Iterative
+      approach (personal opinion, you are free to disagree).
+    </li>
+    <li>
+      <h4>Main approach</h4>
+      Should be a useful way to solve recurrence equations but it looks complex
+      and I am not getting why it is so useful, so..
+      Let's $T(n)$ a recursive algorithm which iterative step split the problem
+      in subproblems of size $\frac{n}{b}$. So $T(n) = aT(\frac{n}{b}) + f(n)$.
+      $f(n)$ implements time to split original problem and merge subproblems results,
+      $a$ is number of subprobles and $b$ determine how original problem is downsized.
+    </li>
   </ul>
   <h4>Substitution approach</h4>
   Let be
@@ -85,8 +100,8 @@
   So $T(1) = k$ and this is fine if $k \leq d$. Now
   $$
   \begin{align}
-  T(n) \leq k(n-1)+c = kn-k+c \leq kn
-  -k \leq -c
+  T(n) \leq k(n-1)+c = kn-k+c \leq kn \\
+  -k \leq -c \\
   k \geq c
   \end{align}
   $$
@@ -139,11 +154,24 @@
   grows in number too fast and we can't find a linear representation. But we can
   say that $T(n) \leq 2T(n-1)+\Theta(1)$ and $T(n) \geq 2T(n-2)+\Theta(1)$. We can
   use these two observations to find linear representations of $O$ and $\Theta$
-  about the algorithm.
+  about the algorithm. Let's start with $O$:
   $$
-  \Theta
+  T(n) \leq 2T(n-1)+\Theta(1) \leq 2^2T(n-2)+2^1\Theta(1)+\Theta(1) \leq \\
+  2^3T(n-3)+2^2\Theta(1)+2^1\Theta(1)+\Theta(1) \leq \\
+  \ldots \\
+  \leq 2^kT(n-k)+\sum_{i=0}^{k-1}2^i\Theta(1) \leq 2^{n-1}\Theta(1)+\sum_{i=0}^{n-2}2^i\Theta(1) = \\
+  2^{n-1}\Theta(1)+(2{n-1}-1)\Theta(1) = (2^n-1)\Theta(1) \Rightarrow \\
+  T(n) = O(2^n)
   $$
-  <h4></h4>
-  <h4></h4>
+  $T(n)$'s behavior finds it's superior limit in $O(2^n)$. Now let's find $T(n)$'s behavior
+  limit:
+  $$
+  T(n) \geq 2T(n-2)+\Theta(1) \geq 2^2T(n-2\dot2)+2\Theta(1) \geq 2^3T(n-2\dot3)+2^2\Theta(1)+2^1\Theta(1)+2^0\Theta(1) \geq \\
+  \ldots \\
+  \geq 2^kT(n-2k)+\sum_{i=0}^{k-1}\Theta(1) \geq 2^{\frac{n}{2}}\Theta(1)+\sum_{i=0}^{\frac{n}{2}-1}2^i\Theta(1) = \\
+  2^{\frac{n}{2}}\Theta(1) + (2^{\frac{n}{2}}-1)\Theta(1) = (2\dot2^{\frac{n}{2}}-1)\Theta(1) \Rightarrow \\
+  T(n) = \Omega(2^{\frac{n}{2}})
+  $$
+  So we can say that T(n) asymptotical behavior's inferior limit is $\Omega(2^{\frac{n}{2}})$.
 </body>
 </html>
