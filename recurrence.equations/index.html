@@ -10,22 +10,52 @@
 </script>
 </head>
 <body>
+  Recurrence equations are model who implements something evolving while they work
+  on a set of input. They are an invaluable tool to analyze costs about algorithms
+  who use recursive call and can be modeled by recurrence equations.
   Recurrence equation is a recursive formula who express a sequence's n-th element
   in relation with the previous $n-1$ elements. Recurrence equation is of order
   $r$ when n-th element is directly related with $n-1, n-2, \dots, n-r$ previous elements.
   Recurrence equations are often used to express recursive algorithms behavior.
   Just think about mergesort complexity. We can describe how it behave by the
   recurrence equation:
-  $$ C_n = C_{n/2} + C_{n/2} + n, C_0 = 1;  $$
-  There are a lot of recurrence equation types:
+  $$ T(n) = T(n/2) + T(n/2) + n, C_0 = 1;  $$
+  There are a few recurrence equation types:
   <ul>
-    <li>first order
+    <li>
+      <h4>first order</h4>
+      When $T(n)$ is bound to $T(n-1)$. Example:
+      $$
+      \begin{cases}
+      T(n) = T(n-1) + \Theta(1) \\
+      T(1) = \Theta(1)
+      \end{cases}
+      $$
       <ul>
-        <li>linear</li>
-        <li>not linear</li>
+        <li>
+          <h4>linear</h4>
+          When $T(n)$ is a polynomial of degree one and it is in the form of
+          $t_nx_n+t_{n-1}x_{n-1} \cdots t_{n+k}x_{n+k}+t_0 = 0$.
+          <ul>
+            <li>with constant coefficients</li>
+            <li>with not constant coefficients</li>
+          </ul>
+        </li>
+        <li>
+          <h4>not linear</h4>
+          When $T(n)$ is a polynomial of degree greater than one.
+        </li>
       </ul>
     </li>
-    <li>second order
+    <li>
+      <h4>second order</h4>
+      When $C_n$ is bound to $C_{n-1}$ and $C_{n-2}$. Let's say:
+      $$
+      \begin{cases}
+      T(n) = T(n-1) + T(n-2) + \Theta(1) \\
+      T(1) = \Theta(1)
+      \end{cases}
+      $$
       <ul>
         <li>linear</li>
         <li>not linear</li>
@@ -61,6 +91,8 @@
     </li>
     <li>
       <h4>Iterative approach</h4>
+      You iterate $T(n)$ enought times to obtain a sum of terms depending by $n$
+      and by initial conditions. It could be used to solve divide et impera algorithms.
     </li>
     <li>
       <h4>Tree approach</h4>
@@ -71,13 +103,14 @@
       approach (personal opinion, you are free to disagree).
     </li>
     <li>
-      <h4>Main approach</h4>
-      Should be a useful way to solve recurrence equations but it looks complex
-      and I am not getting why it is so useful, so..
-      Let's $T(n)$ a recursive algorithm which iterative step split the problem
-      in subproblems of size $\frac{n}{b}$. So $T(n) = aT(\frac{n}{b}) + f(n)$.
-      $f(n)$ implements time to split original problem and merge subproblems results,
-      $a$ is number of subprobles and $b$ determine how original problem is downsized.
+      <h4>Master method (or Repertorio approach)</h4>
+      It is a useful way to solve recurrence equations which are in the form $T(n) = aT(\frac{n}{b}) + f(n)$.
+      Where $a \geq 1$ indicates that problem splits in at least $a$ subproblems
+      at the iterative step. $b \gt 1$ indicates how much problem's size is downsized
+      at the iterative step. $f(n) = \Theta(n^c), c \geq 0$ implements time to split
+      original problem.
+    </li>
+    <li>
     </li>
   </ul>
   <h4>Substitution approach</h4>
@@ -166,12 +199,67 @@
   $T(n)$'s behavior finds it's superior limit in $O(2^n)$. Now let's find $T(n)$'s behavior
   limit:
   $$
-  T(n) \geq 2T(n-2)+\Theta(1) \geq 2^2T(n-2\dot2)+2\Theta(1) \geq 2^3T(n-2\dot3)+2^2\Theta(1)+2^1\Theta(1)+2^0\Theta(1) \geq \\
+  T(n) \geq 2T(n-2)+\Theta(1) \geq 2^2T(n-2\cdot2)+2\Theta(1) \geq 2^3T(n-2\cdot3)+2^2\Theta(1)+2^1\Theta(1)+2^0\Theta(1) \geq \\
   \ldots \\
   \geq 2^kT(n-2k)+\sum_{i=0}^{k-1}\Theta(1) \geq 2^{\frac{n}{2}}\Theta(1)+\sum_{i=0}^{\frac{n}{2}-1}2^i\Theta(1) = \\
-  2^{\frac{n}{2}}\Theta(1) + (2^{\frac{n}{2}}-1)\Theta(1) = (2\dot2^{\frac{n}{2}}-1)\Theta(1) \Rightarrow \\
+  2^{\frac{n}{2}}\Theta(1) + (2^{\frac{n}{2}}-1)\Theta(1) = (2\cdot2^{\frac{n}{2}}-1)\Theta(1) \Rightarrow \\
   T(n) = \Omega(2^{\frac{n}{2}})
   $$
   So we can say that T(n) asymptotical behavior's inferior limit is $\Omega(2^{\frac{n}{2}})$.
+  <h4>Tree approach</h4>
+  Tree approach is a variant of the iterative approach.
+  <h4>Master method (or Repertorio approach)</h4>
+  We say Master method solves recurrences who:
+  <ul>
+    <li>
+      are in the form of $T(n) = a(T \frac{n}{b})+f(n)$,
+    </li>
+    <li>
+      $a \geq 1$. The problem is at least reduced to a smaller sub problem by
+      the recursive step and at least one step is required,
+    </li>
+    <li>
+      $b \geq 1$. Recursive step splits the problem in smaller one. Size of subproblem
+      is reduced by a factor $b$,
+    </li>
+    <li>
+      $f(n) \geq 0$ generally.
+    </li>
+  </ul>
+  So, given the initial problem each recursive step splits that one in $a$ smaller
+  ones each one reduced in size by a $b$ factor. Exploding problems in sub problems
+  for each steps can be seen as a tree of height $H = log_b n$ who has
+  $$a^H = a^{\log_b n} \Rightarrow n^{\log_b a}$$
+  leaves.
+  Let's consider these three cases:
+  <ul>
+    <li>
+      Let the number of leaves grow faster than $f(n)$. In this case cost of each
+      step increase by a significant factor and $f(n)$ will be significant smaller
+      the cost to reach that leaf at the time we reach it. This means that step's
+      cost dominates. Then we can say:
+      $$T(n) = \Theta(n^{log_b a})$$
+    </li>
+    <li>
+      Let the cost of each step be constant. In this case $f(n)$ should be roughly
+      equals to $n^{\log_b a}$. So, total running time would be $f(n)$ times the
+      tree's height. Then we can say:
+      $$T(n) = \Theta(n^{\log_b a} \cdot \log_{k+1} n)$$
+      Where $\log_{k+1}$ would be the height of the tree.
+    </li>
+    <li>
+      Let the cost of each step be significantly reduced every time and by the time
+      we reach the leaf $f(n)$ will be polynomially larger than $n^{\log_b a}$.
+      Then we can say:
+      $$T(n) = \Theta(f(n))$$
+    </li>
+  </ul>
+  So, if you have a recursive equation in the form of $T(n) = a(T \frac{n}{b})+f(n)$
+  you can solve it by one of the three cases. When cost of recursive steps dominates,
+  $$T(n) = \Theta(n^{\log_b a})$$
+  When recursive step's cost are equals to leaf cost then:
+  $$T(n) = \Theta(n^{\log_b a} \cdot \log_{k+1} n)$$
+  When cost to compute single leaves dominates then:
+  $$T(n) = \Theta(f(n))$$
 </body>
 </html>
